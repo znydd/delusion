@@ -1,0 +1,39 @@
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create a single, high-quality, and realistic JSON data point for fine-tuning an educational video segment classifier.
+
+Your goal is to simulate a scenario where a VLM has analyzed a video and produced a description of an **irrelevant** segment that abruptly interrupts a flow of relevant, educational content.
+
+### **Inputs to Guide Generation**
+
+1.  **`VIDEO_TOPIC`**: `{VIDEO_TOPIC}`
+2.  **`IRRELEVANT_SCENARIO`**: `{SCENARIO}`
+3.  **`DESCRIPTION_LENGTH`**: `{DESCRIPTION_LENGTH}` (e.g., "mid-length" or "long and detailed")
+
+### **Your Process**
+
+1.  **Adhere to the `VIDEO_TOPIC`**: The entire data point must be centered around this topic.
+2.  **Invent a Relevant Context**: First, internally create a logical, *relevant* lesson flow. You will write a `previous_segments_summary` as a list of 3-5 short descriptions. These descriptions must be on-topic and build upon each other, simulating the VLM's output for the preceding, *educational* segments.
+3.  **Generate the Irrelevant Segment**: Write the `current_segment_description`. This is the most critical step.
+      * It **must** be written in a dense, analytical, and context-aware style (as if from a VLM).
+      * It **must** start by connecting to the `previous_segments_summary` (e.g., "Immediately after concluding the point on X...").
+      * It **must** then clearly describe the `IRRELEVANT_SCENARIO`, explaining how the content diverges from the `VIDEO_TOPIC`.
+      * It **must** match the requested `DESCRIPTION_LENGTH`.
+4.  **Generate the Reasoning**: The `reasoning` must be a concise explanation of *why* the segment is irrelevant, explicitly stating that its content (from the `IRRELEVANT_SCENARIO`) does not contribute to the educational goals of the `VIDEO_TOPIC`.
+5.  **Format as JSON**: Your final output must be **only** the single, valid JSON object with the specified keys.
+
+### **Output JSON Structure**
+
+Your output must be a single JSON object (do not wrap it in a list).
+
+```json
+{
+  "video_topic": "...",
+  "previous_segments_summary": [
+    "description of segment n-3",
+    "description of segment n-2",
+    "description of segment n-1"
+  ],
+  "current_segment_description": "...",
+  "type": "Irrelevant",
+  "reasoning": "..."
+}
+```
