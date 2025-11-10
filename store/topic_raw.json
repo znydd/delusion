@@ -1,0 +1,500 @@
+[
+    {
+        "humanities": [
+            {
+                "discipline": "History",
+                "major_courses": [
+                    "Ancient History",
+                    "Medieval History",
+                    "Modern History",
+                    "Art History",
+                    "Economic History",
+                    "Social History",
+                    "Cultural History",
+                    "Political History",
+                    "Military History",
+                    "History of Science",
+                    "World History",
+                    "Diplomatic History"
+                ]
+            },
+            {
+                "discipline": "Literature & Languages",
+                "major_courses": [
+                    "English Literature",
+                    "Comparative Literature",
+                    "Linguistics",
+                    "French Studies",
+                    "Spanish Studies",
+                    "German Studies",
+                    "Creative Writing",
+                    "Classical Languages (Latin/Greek)",
+                    "Translation Studies",
+                    "Rhetoric and Composition",
+                    "Applied Linguistics",
+                    "Phonetics"
+                ]
+            },
+            {
+                "discipline": "Philosophy",
+                "major_courses": [
+                    "Ethics (Moral Philosophy)",
+                    "Metaphysics",
+                    "Epistemology (Theory of Knowledge)",
+                    "Logic",
+                    "Political Philosophy",
+                    "Aesthetics (Philosophy of Art)",
+                    "Philosophy of Mind",
+                    "Philosophy of Language",
+                    "Philosophy of Science",
+                    "Philosophy of Religion",
+                    "Ancient Philosophy",
+                    "Existentialism"
+                ]
+            },
+            {
+                "discipline": "The Arts",
+                "major_courses": [
+                    "Fine Art (Painting, Sculpture)",
+                    "Music Theory",
+                    "Music Performance",
+                    "Music Composition",
+                    "Theater Studies (Acting, Directing)",
+                    "Dance",
+                    "Film Studies",
+                    "Film Production",
+                    "Photography",
+                    "Graphic Design",
+                    "Musicology",
+                    "Digital Media Arts"
+                ]
+            },
+            {
+                "discipline": "Classics & Religious Studies",
+                "major_courses": [
+                    "Classical Civilization",
+                    "Ancient Greek Language & Literature",
+                    "Latin Language & Literature",
+                    "Classical Archaeology",
+                    "Comparative Religion",
+                    "Theology",
+                    "Biblical Studies",
+                    "Islamic Studies",
+                    "Buddhist Studies",
+                    "Hindu Studies",
+                    "Jewish Studies",
+                    "Mythology"
+                ]
+            }
+        ]
+    },
+    {
+        "social_sciences": [
+            {
+                "discipline": "Economics",
+                "major_courses": [
+                    "Microeconomics",
+                    "Macroeconomics",
+                    "Econometrics",
+                    "International Economics",
+                    "Development Economics",
+                    "Labor Economics",
+                    "Public Finance",
+                    "Monetary Economics",
+                    "Behavioral Economics",
+                    "Industrial Organization",
+                    "Economic History",
+                    "Game Theory"
+                ]
+            },
+            {
+                "discipline": "Psychology",
+                "major_courses": [
+                    "General Psychology",
+                    "Social Psychology",
+                    "Cognitive Psychology",
+                    "Developmental Psychology",
+                    "Abnormal Psychology (Psychopathology)",
+                    "Behavioral Neuroscience",
+                    "Sensation and Perception",
+                    "Statistics for Psychology",
+                    "Research Methods in Psychology",
+                    "Clinical Psychology",
+                    "Personality Psychology",
+                    "Industrial-Organizational Psychology"
+                ]
+            },
+            {
+                "discipline": "Sociology",
+                "major_courses": [
+                    "Introduction to Sociology",
+                    "Sociological Theory",
+                    "Social Research Methods",
+                    "Quantitative Analysis (Statistics)",
+                    "Sociology of Gender",
+                    "Sociology of Race and Ethnicity",
+                    "Criminology",
+                    "Sociology of the Family",
+                    "Social Stratification (Inequality)",
+                    "Urban Sociology",
+                    "Medical Sociology",
+                    "Sociology of Globalization"
+                ]
+            },
+            {
+                "discipline": "Political Science",
+                "major_courses": [
+                    "Introduction to Political Science",
+                    "Comparative Politics",
+                    "International Relations",
+                    "Political Theory (Political Philosophy)",
+                    "National Politics (e.g., American Politics)",
+                    "Public Policy Analysis",
+                    "Public Administration",
+                    "Political Economy",
+                    "Research Methods in Political Science",
+                    "International Law and Organizations",
+                    "Conflict and Security Studies",
+                    "Elections and Voting Behavior"
+                ]
+            },
+            {
+                "discipline": "Anthropology",
+                "major_courses": [
+                    "Cultural Anthropology",
+                    "Biological (Physical) Anthropology",
+                    "Archaeology",
+                    "Linguistic Anthropology",
+                    "Ethnographic Methods",
+                    "Human Evolution",
+                    "Primate Behavior",
+                    "Medical Anthropology",
+                    "Anthropology of Globalization",
+                    "Forensic Anthropology",
+                    "Food and Culture",
+                    "Myth, Ritual, and Religion"
+                ]
+            },
+            {
+                "discipline": "Geography",
+                "major_courses": [
+                    "Physical Geography",
+                    "Human Geography",
+                    "Geographic Information Systems (GIS)",
+                    "Cartography (Mapmaking)",
+                    "Remote Sensing",
+                    "Urban Geography",
+                    "Economic Geography",
+                    "Political Geography",
+                    "Climatology",
+                    "Geomorphology",
+                    "Population Geography",
+                    "Water Resources"
+                ]
+            },
+            {
+                "discipline": "Archaeology",
+                "major_courses": [
+                    "Principles of Archaeology",
+                    "Archaeological Methods and Theory",
+                    "Archaeological Field Methods (Excavation)",
+                    "Archaeological Laboratory Methods",
+                    "World Prehistory",
+                    "Archaeology of [Specific Region, e.g., Egypt, Rome]",
+                    "Bioarchaeology (Human Remains)",
+                    "Zooarchaeology (Animal Remains)",
+                    "Lithic Analysis (Stone Tools)",
+                    "Ceramic Analysis (Pottery)",
+                    "Historical Archaeology",
+                    "Cultural Resource Management"
+                ]
+            }
+        ]
+    },
+    {
+        "natural_sciences": [
+            {
+                "discipline": "Biology",
+                "major_courses": [
+                    "General Biology",
+                    "Cell Biology",
+                    "Molecular Biology",
+                    "Genetics",
+                    "Ecology",
+                    "Evolutionary Biology",
+                    "Human Anatomy",
+                    "Human Physiology",
+                    "Microbiology",
+                    "Botany (Plant Biology)",
+                    "Zoology (Animal Biology)",
+                    "Biochemistry"
+                ]
+            },
+            {
+                "discipline": "Chemistry",
+                "major_courses": [
+                    "General Chemistry I & II",
+                    "Organic Chemistry I & II",
+                    "Physical Chemistry",
+                    "Analytical Chemistry",
+                    "Inorganic Chemistry",
+                    "Biochemistry",
+                    "Quantum Chemistry",
+                    "Spectroscopy",
+                    "Chemical Thermodynamics",
+                    "Polymer Chemistry",
+                    "Environmental Chemistry",
+                    "Materials Chemistry"
+                ]
+            },
+            {
+                "discipline": "Physics",
+                "major_courses": [
+                    "Classical Mechanics",
+                    "Electromagnetism",
+                    "Quantum Mechanics",
+                    "Thermodynamics and Statistical Mechanics",
+                    "Modern Physics",
+                    "Optics",
+                    "Astrophysics",
+                    "Particle Physics",
+                    "Condensed Matter (Solid State) Physics",
+                    "Nuclear Physics",
+                    "Computational Physics",
+                    "Relativity (Special and General)"
+                ]
+            },
+            {
+                "discipline": "Earth Sciences",
+                "major_courses": [
+                    "Physical Geology",
+                    "Historical Geology",
+                    "Mineralogy",
+                    "Petrology (Igneous, Sedimentary, Metamorphic)",
+                    "Structural Geology",
+                    "Paleontology",
+                    "Geomorphology",
+                    "Oceanography",
+                    "Meteorology",
+                    "Geophysics",
+                    "Geochemistry",
+                    "Hydrogeology"
+                ]
+            },
+            {
+                "discipline": "Environmental Science",
+                "major_courses": [
+                    "Introduction to Environmental Science",
+                    "Environmental Biology",
+                    "Environmental Chemistry",
+                    "Environmental Geology",
+                    "Ecology",
+                    "Geographic Information Systems (GIS)",
+                    "Water Resources Management",
+                    "Environmental Policy and Law",
+                    "Conservation Biology",
+                    "Environmental Toxicology",
+                    "Climate Change Science",
+                    "Sustainable Development"
+                ]
+            }
+        ]
+    },
+    {
+        "formal_sciences": [
+            {
+                "discipline": "Mathematics",
+                "major_courses": [
+                    "Calculus I (Single Variable)",
+                    "Calculus II (Integration & Series)",
+                    "Calculus III (Multivariable)",
+                    "Linear Algebra",
+                    "Differential Equations",
+                    "Real Analysis",
+                    "Complex Analysis",
+                    "Abstract Algebra",
+                    "Probability Theory",
+                    "Statistics",
+                    "Discrete Mathematics",
+                    "Number Theory",
+                    "Topology"
+                ]
+            },
+            {
+                "discipline": "Computer Science",
+                "major_courses": [
+                    "Introduction to Programming",
+                    "Data Structures",
+                    "Algorithms",
+                    "Computer Organization and Architecture",
+                    "Operating Systems",
+                    "Database Systems",
+                    "Software Engineering",
+                    "Computer Networks",
+                    "Artificial Intelligence",
+                    "Machine Learning",
+                    "Theory of Computation",
+                    "Data Science",
+                    "Cybersecurity"
+                ]
+            },
+            {
+                "discipline": "Logic",
+                "major_courses": [
+                    "Introduction to Logic (Critical Reasoning)",
+                    "Symbolic Logic (Propositional and Predicate)",
+                    "Mathematical Logic",
+                    "Set Theory",
+                    "Modal Logic",
+                    "Computability Theory",
+                    "Proof Theory",
+                    "Philosophy of Logic",
+                    "Non-Classical Logics",
+                    "Model Theory",
+                    "Metalogic",
+                    "Philosophy of Mathematics"
+                ]
+            }
+        ]
+    },
+    {
+        "applied_professional_fields": [
+            {
+                "discipline": "Business & Management",
+                "major_courses": [
+                    "Accounting",
+                    "Finance",
+                    "Marketing",
+                    "Human Resource Management",
+                    "Operations Management",
+                    "Supply Chain Management",
+                    "International Business",
+                    "Management Information Systems (MIS)",
+                    "Business Strategy",
+                    "Entrepreneurship",
+                    "Business Analytics",
+                    "Organizational Behavior"
+                ]
+            },
+            {
+                "discipline": "Engineering",
+                "major_courses": [
+                    "Civil Engineering",
+                    "Mechanical Engineering",
+                    "Electrical Engineering",
+                    "Chemical Engineering",
+                    "Aerospace Engineering",
+                    "Biomedical Engineering",
+                    "Computer Engineering",
+                    "Software Engineering",
+                    "Industrial Engineering",
+                    "Environmental Engineering",
+                    "Materials Science",
+                    "Robotics"
+                ]
+            },
+            {
+                "discipline": "Health & Medicine",
+                "major_courses": [
+                    "Medicine (MD)",
+                    "Nursing",
+                    "Dentistry",
+                    "Pharmacy",
+                    "Public Health",
+                    "Veterinary Medicine",
+                    "Physiotherapy (Physical Therapy)",
+                    "Occupational Therapy",
+                    "Nutrition and Dietetics",
+                    "Medical Laboratory Science",
+                    "Health Administration",
+                    "Radiography"
+                ]
+            },
+            {
+                "discipline": "Law",
+                "major_courses": [
+                    "Contract Law",
+                    "Criminal Law",
+                    "Constitutional Law",
+                    "Property Law",
+                    "Tort Law",
+                    "Civil Procedure",
+                    "Corporate Law",
+                    "International Law",
+                    "Environmental Law",
+                    "Family Law",
+                    "Intellectual Property Law",
+                    "Tax Law"
+                ]
+            },
+            {
+                "discipline": "Education",
+                "major_courses": [
+                    "Foundations of Education",
+                    "Educational Psychology",
+                    "Curriculum and Instruction",
+                    "Classroom Management",
+                    "Special Education",
+                    "Early Childhood Education",
+                    "Secondary Education",
+                    "Educational Leadership",
+                    "Instructional Technology",
+                    "Assessment and Evaluation",
+                    "Literacy Education",
+                    "TESOL (Teaching English to Speakers of Other Languages)"
+                ]
+            },
+            {
+                "discipline": "Architecture & Design",
+                "major_courses": [
+                    "Architectural Design Studio",
+                    "History of Architecture",
+                    "Building Construction & Materials",
+                    "Structural Systems",
+                    "Environmental Systems",
+                    "Urban Planning",
+                    "Landscape Architecture",
+                    "Interior Design",
+                    "Graphic Design",
+                    "Industrial (Product) Design",
+                    "Digital Design (CAD/BIM)",
+                    "Design Theory"
+                ]
+            },
+            {
+                "discipline": "Agriculture",
+                "major_courses": [
+                    "Agronomy (Crop Science)",
+                    "Soil Science",
+                    "Animal Science",
+                    "Horticulture",
+                    "Agricultural Economics",
+                    "Agricultural Engineering",
+                    "Food Science and Technology",
+                    "Plant Pathology",
+                    "Entomology",
+                    "Aquaculture",
+                    "Forestry",
+                    "Rangeland Management"
+                ]
+            },
+            {
+                "discipline": "Media & Communications",
+                "major_courses": [
+                    "Introduction to Mass Communication",
+                    "Journalism (Reporting & Writing)",
+                    "Public Relations Principles",
+                    "Advertising Principles",
+                    "Broadcast Production (TV/Radio)",
+                    "Film Production",
+                    "Media Ethics and Law",
+                    "Strategic Communication",
+                    "Digital Media",
+                    "Interpersonal Communication",
+                    "Communication Theory",
+                    "Photojournalism"
+                ]
+            }
+        ]
+    }
+]
