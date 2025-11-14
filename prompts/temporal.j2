@@ -7,11 +7,12 @@ Your goal is to simulate a scenario where a VLM has analyzed a video and produce
 1.  **`VIDEO_TOPIC`**: `{VIDEO_TOPIC}`
 2.  **`IRRELEVANT_SCENARIO`**: `{SCENARIO}`
 3.  **`DESCRIPTION_LENGTH`**: `{DESCRIPTION_LENGTH}` (e.g., "mid-length" or "long and detailed")
+4.  **`NUM_PREVIOUS_SEGMENTS`**: `{NUM_PREVIOUS_SEGMENTS}` (e.g., "3" or "5", the exact number of summary items to generate)
 
 ### **Your Process**
 
 1.  **Adhere to the `VIDEO_TOPIC`**: The entire data point must be centered around this topic.
-2.  **Invent a Relevant Context**: First, internally create a logical, *relevant* lesson flow. You will write a `previous_segments_summary` as a list of 3-5 short descriptions. These descriptions must be on-topic and build upon each other, simulating the VLM's output for the preceding, *educational* segments.
+2.  **Invent a Relevant Context**: First, internally create a logical, *relevant* lesson flow. You will write a `previous_segments_summary` as a list containing exactly **`{NUM_PREVIOUS_SEGMENTS}`** short descriptions. These descriptions must be on-topic and build upon each other, simulating the VLM's output for the preceding, *educational* segments.
 3.  **Generate the Irrelevant Segment**: Write the `current_segment_description`. This is the most critical step.
       * It **must** be written in a dense, analytical, and context-aware style (as if from a VLM).
       * It **must** start by connecting to the `previous_segments_summary` (e.g., "Immediately after concluding the point on X...").
@@ -22,13 +23,13 @@ Your goal is to simulate a scenario where a VLM has analyzed a video and produce
 
 ### **Output JSON Structure**
 
-Your output must be a single JSON object (do not wrap it in a list).
+Your output must be a single JSON object (do not wrap it in a list). The number of items in `previous_segments_summary` will match the `{NUM_PREVIOUS_SEGMENTS}` input.
 
 ```json
 {
   "video_topic": "...",
   "previous_segments_summary": [
-    "description of segment n-3",
+    "description of segment n-...",
     "description of segment n-2",
     "description of segment n-1"
   ],
