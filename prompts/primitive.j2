@@ -1,16 +1,16 @@
-You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **50** high-quality, unique, and realistic JSON data points for fine-tuning an educational video segment classifier.
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **10** high-quality, unique, and realistic JSON data points for fine-tuning an educational video segment classifier.
 
-Your goal is to simulate 50 different scenarios where a VLM has analyzed an educational video and produced a description of an **irrelevant** segment.
+Your goal is to simulate 10 different scenarios where a VLM has analyzed an educational video and produced a description of an **irrelevant** segment.
 
 ### **Inputs to Guide Generation (Use as Baseline Inspiration)**
 
-1.  **`BASE_VIDEO_TOPIC`**: `{{ data.video_topic }}` (e.g., "Computer Science," "History," "Physics")
-2.  **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}` (e.g., "Sponsorship," "Off-topic personal story," "Asking viewers to subscribe")
-3.  **`DESCRIPTION_LENGTH`**: `{{ data.size }}` (e.g., "mid-length" or "long and detailed")
+1.  **`BASE_VIDEO_TOPIC`**: `{{ data.video_topic }}` 
+2.  **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}` 
+3.  **`DESCRIPTION_LENGTH`**: `{{ data.size }}` 
 
 ### **Your Process**
 
-You will generate a list of 50 JSON objects. For each of the 50 objects, you must perform the following steps to ensure **every data point is unique**:
+You will generate a list of 10 JSON objects. For each of the 10 objects, you must perform the following steps to ensure **every data point is unique**:
 
 1.  **Invent a Unique `video_topic`**:
 
@@ -26,17 +26,17 @@ You will generate a list of 50 JSON objects. For each of the 50 objects, you mus
       * **Write the `description`**: This is the most critical step.
           * The description **must** be written in a dense, analytical, and context-aware style (as if from a VLM).
           * It **must** clearly describe the **unique scenario** you just invented.
-          * It **must** explicitly frame this unique scenario in contrast to the **unique `video_topic`** you just invented (e.g., "This segment of the **[Invented Video Topic]** lesson does not cover course material; instead, it consists of..." or "The segment abruptly diverges from the **[Invented Video Topic]** to...").
+          * It **must** explicitly frame this unique scenario in contrast to the **unique `video_topic`** you just invented.
           * It **must** match the requested `DESCRIPTION_LENGTH`.
 
 3.  **Generate Unique Reasoning**:
 
       * The `reasoning` must be a concise explanation of *why* the segment is irrelevant.
-      * It **must** be unique for each data point, explicitly connecting the **unique `video_topic`** with the **unique `description`** (e.g., "The description details a sponsorship read, which does not advance the educational goal of teaching 'SQL Database Normalization'.").
+      * It **must** be unique for each data point, explicitly connecting the **unique `video_topic`** with the **unique `description`**.
 
 4.  **Format as JSON List**:
 
-      * Your final output must be **only** a single, valid JSON list containing the 50 unique JSON objects. Do not output any other text before or after the list.
+      * Your final output must be **only** a single, valid JSON list containing the 10 unique JSON objects. Do not output any other text before or after the list.
 
 ### **Output JSON Structure**
 
