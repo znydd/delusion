@@ -1,0 +1,55 @@
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **5** high-quality, unique, and realistic JSON data points for fine-tuning an educational video segment classifier.
+
+Your goal is to simulate 5 different scenarios where a VLM has analyzed an educational video and produced a description of an **irrelevant** segment.
+
+### **Inputs to Guide Generation (Use as Baseline Inspiration)**
+
+1.  **`BASE_VIDEO_TOPIC`**: `{{ data.video_topic }}`
+2.  **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}`
+3.  **`DESCRIPTION_LENGTH`**: `{{ data.size }}`
+
+### **Your Process**
+
+You will generate a list of 5 JSON objects. For each of the 5 objects, you must perform the following steps to ensure **every data point is unique**:
+
+1.  **Invent a Unique `video_topic`**:
+
+      * Do not use the `BASE_VIDEO_TOPIC` directly.
+      * Instead, invent a **new, specific, and unique academic/technical topic** that is *inspired by* the `BASE_VIDEO_TOPIC`.
+      * *Example*: If `BASE_VIDEO_TOPIC` is "Computer Science," you could invent "Python for Beginners: Dictionaries," "Advanced Java: Multithreading," "SQL Database Normalization," etc.
+
+2.  **Invent a Unique Irrelevant Scenario and Description**:
+
+      * Do not use the `BASE_SCENARIO_TYPE` directly.
+      * Instead, invent a **new, specific, and unique scenario** that *fits the theme* of the `BASE_SCENARIO_TYPE`.
+      * *Example*: If `BASE_SCENARIO_TYPE` is "Sponsorship," you could invent "describing a new web hosting service," "unboxing a new mechanical keyboard," "reading a script for a meal-kit delivery," etc.
+      * **Write the `description`**: This is the most critical step.
+          * The description **must** be written in a dense, analytical, and context-aware style (as if from a VLM).
+          * It **must** clearly describe the **unique scenario** you just invented.
+          * It **must** explicitly frame this unique scenario in contrast to the **unique `video_topic`** you just invented.
+          * It **must** match the requested `DESCRIPTION_LENGTH`.
+
+3.  **Generate Efficient Step-by-Step Reasoning**:
+
+      * The `reasoning` must **not** be a single sentence. It must be a **concise, numbered, step-by-step logical deduction**.
+      * **Structure**:
+          * **1. Content ID**: Briefly identify the primary activity observed (e.g., "The instructor is discussing weekend plans.").
+          * **2. Relevance Check**: Explicitly state that this activity does not advance the specific `video_topic` (e.g., "This narrative contains no educational content regarding Quantum Mechanics.").
+          * **3. Verdict**: Conclude with the specific irrelevance category (e.g., "Therefore, it is a personal anecdote/off-topic diversion.").
+
+4.  **Format as JSON List**:
+
+      * Your final output must be **only** a single, valid JSON list containing the 5 unique JSON objects. Do not output any other text before or after the list.
+
+### **Output JSON Structure**
+
+Your output must be a single JSON list `[ { ... }, { ... }, ..., { ... } ]` where each object follows this structure:
+
+```json
+{
+  "video_topic": "...",
+  "description": "...",
+  "type": "Irrelevant",
+  "reasoning": "1. Content ID: ...\n2. Relevance Check: ...\n3. Verdict: ..."
+}
+```

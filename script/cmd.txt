@@ -1,0 +1,14 @@
+./llama-server \
+    --model ~/models/qwen38BThinking/Qwen3-8B-Q8_0.gguf \
+    --host 127.0.0.1 \
+    --port 8000 \
+    --ctx-size 16384 \
+    --n-gpu-layers 99 \
+    -ot ".ffn_.*_exps.=CPU" \
+    --seed 3407 \
+    --prio 3 \
+    --temp 0.6 \
+    --min-p 0.0 \
+    --top-p 0.95 \
+    --top-k 20 \
+    -no-cnv \

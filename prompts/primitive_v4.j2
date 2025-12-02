@@ -1,0 +1,58 @@
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **1** high-quality, unique, and realistic JSON data points for fine-tuning an educational video segment classifier.
+
+Your goal is to simulate 1 different scenarios where a VLM has analyzed an educational video and produced a description of an **irrelevant** segment.
+
+### **Inputs to Guide Generation (Use as Baseline Inspiration)**
+
+1.  **`BASE_VIDEO_TOPIC`**: `{{ data.video_topic }}`
+2.  **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}`
+3.  **`DESCRIPTION_LENGTH`**: `{{ data.size }}`
+
+### **Your Process**
+
+You will generate a list of 1 JSON objects. For each of the 1 objects, you must perform the following steps to ensure **every data point is unique**:
+
+1.  **Invent a Unique `video_topic`**:
+
+      * Do not use the `BASE_VIDEO_TOPIC` directly.
+      * Instead, invent a **new, specific, and unique academic/technical topic** that is *inspired by* the `BASE_VIDEO_TOPIC`.
+      * *Example*: If `BASE_VIDEO_TOPIC` is "Computer Science," you could invent "Python for Beginners: Dictionaries," "Advanced Java: Multithreading," "SQL Database Normalization," etc.
+
+2.  **Invent a Unique Irrelevant Scenario and Description**:
+
+      * Do not use the `BASE_SCENARIO_TYPE` directly.
+      * Instead, invent a **new, specific, and unique scenario** that *fits the theme* of the `BASE_SCENARIO_TYPE`.
+      * **Write the `description`**: This is the most critical step.
+          * The description **must** be written in a dense, analytical, and context-aware style (as if from a VLM).
+          * It **must** clearly describe the **unique scenario** you just invented.
+          * It **must** explicitly frame this unique scenario in contrast to the **unique `video_topic`** you just invented.
+          * It **must** match the requested `DESCRIPTION_LENGTH`.
+
+3.  **Generate a "Reasoning Trace" (Chain-of-Thought)**:
+
+      * The `reasoning` field must **NOT** be a simple summary.
+      * It **MUST** be a detailed **internal monologue** or **thought trace** showing *how* an AI classifier would analyze the data to reach the "Irrelevant" conclusion.
+      * **Trace Structure to Simulate**:
+          * **Analysis of Inputs:** "First, I'll check the video topic [Topic] and the current segment description..."
+          * **Audio/Transcript Evaluation:** "Checking the audio evidence... The transcript indicates [X]..."
+          * **Visual Evaluation:** "Looking at the visual state..."
+          * **Constraint Check:** "Applying the Audio-First rule: Since the speech is off-topic..." or "Applying the 5-second silence rule..."
+          * **Scenario Matching:** "This aligns with the known irrelevant scenario of [Scenario Name]..."
+          * **Final Determination:** "Conclusion: The segment does not advance the educational goal."
+
+4.  **Format as JSON List**:
+
+      * Your final output must be **only** a single, valid JSON list containing the 1 unique JSON objects.
+
+### **Output JSON Structure**
+
+Your output must be a single JSON list `[ { ... }, { ... }, ..., { ... } ]` where each object follows this structure:
+
+```json
+{
+  "video_topic": "...",
+  "description": "...",
+  "type": "Irrelevant",
+  "reasoning": "First, I need to compare the segment's content against the video topic '...'. \n\nLooking at the description, the audio/transcript is described as [...]. This does not appear to be teaching content. \n\nVisually, the screen shows [...]. While this might look related, the 'Audio-First' rule states that visual content cannot save a segment if the audio is off-topic. \n\nThe activity described matches the known irrelevant scenario of '...'. \n\nSince the primary signal (speech) is not pedagogical, I determine this segment is Irrelevant."
+}
+```

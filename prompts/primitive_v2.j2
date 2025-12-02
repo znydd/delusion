@@ -1,0 +1,59 @@
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **5** high-quality, unique, and realistic JSON data points for fine-tuning an educational video segment classifier.
+
+Your goal is to simulate 5 different scenarios where a "Forensic VLM" has analyzed an educational video and produced a detailed, structured report of an **irrelevant** segment.
+
+### **Inputs to Guide Generation (Use as Baseline Inspiration)**
+
+1.  **`BASE_VIDEO_TOPIC`**: `{{ data.video_topic }}`
+2.  **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}`
+3.  **`DESCRIPTION_LENGTH`**: `{{ data.size }}`
+
+### **Your Process**
+
+You will generate a list of 5 JSON objects. For each of the 5 objects, you must perform the following steps to ensure **every data point is unique**:
+
+1.  **Invent a Unique `video_topic`**:
+
+      * Do not use the `BASE_VIDEO_TOPIC` directly.
+      * Instead, invent a **new, specific, and unique academic/technical topic** that is *inspired by* the `BASE_VIDEO_TOPIC`.
+
+2.  **Invent a Unique Irrelevant Scenario**:
+
+      * Do not use the `BASE_SCENARIO_TYPE` directly.
+      * Instead, invent a **new, specific, and unique scenario** that *fits the theme* of the `BASE_SCENARIO_TYPE`.
+
+3.  **Write the `description` (Crucial - Must match VLM Output Style)**:
+
+      * The description must **NOT** be a simple paragraph. It **MUST** be a structured text block mimicking a forensic VLM report with exactly these four headers:
+          * **1. Visual State Analysis**: (Activity Level, Primary Visual Subject, Detailed Description)
+          * **2. Audio & Transcript Analysis**: (Audio Status, Speaker Action, Content Summary)
+          * **3. Irrelevant Event Log (Forensic Detail)**: (List specific events like "Loud siren at 00:05", "Loading screen", etc.)
+          * **4. Chronological Context Check**: (Does it follow the previous segment?)
+      * *Note: Ensure the content clearly reflects the unique irrelevant scenario you invented.*
+
+4.  **Generate Step-by-Step Reasoning**:
+
+      * Do not write a single sentence. You must provide **concise reasoning steps** that an AI classifier would follow.
+      * **Structure**:
+          * **Step 1 (Audio):** Check if the transcript contains on-topic teaching.
+          * **Step 2 (Visual):** Check if visuals support the lesson.
+          * **Step 3 (Scenario):** Identify the specific irrelevant category/event.
+          * **Step 4 (Verdict):** Final conclusion based on the rules.
+
+5.  **Format as JSON List**:
+
+      * Your final output must be **only** a single, valid JSON list containing the 5 unique JSON objects.
+
+### **Output JSON Structure**
+
+Your output must be a single JSON list `[ { ... }, { ... }, ..., { ... } ]` where each object follows this structure.
+*Ensure the "description" field contains the formatted VLM report as a single string (use `\n` for line breaks).*
+
+```json
+{
+  "video_topic": "...",
+  "description": "**1. Visual State Analysis**\n* **Activity Level:** [Value]\n* **Primary Visual Subject:** [Value]\n* **Detailed Description:** [Text]\n\n**2. Audio & Transcript Analysis**\n* **Audio Status:** [Value]\n* **Speaker Action:** [Value]\n* **Content Summary:** [Text]\n\n**3. Irrelevant Event Log (Forensic Detail)**\n* [Text]\n\n**4. Chronological Context Check**\n* [Text]",
+  "type": "Irrelevant",
+  "reasoning": "1. Audio Check: Transcript contains no teaching content, only [Event].\n2. Visual Check: Visuals show [Object] which is unrelated to the topic.\n3. Scenario Match: Matches known scenario '[Category]'.\n4. Verdict: Segment is Irrelevant."
+}
+```

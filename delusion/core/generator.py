@@ -29,13 +29,15 @@ class DataGenerator:
     def _prompt_loader(self, file_name: str, context_data: dict) -> str:
         template = self.prompt_env.get_template(file_name)
         prompt = template.render(data=context_data)
-        return prompt
+        print(prompt)
+        msg = [{"role": "user", "content": prompt}]
+        return msg
 
     def generate_data(self, data_type: str) -> str:
         if data_type == "primitive":
-            prompt_file = "primitive.j2"
+            prompt_file = "primitive_v4.j2"
         elif data_type == "temporal":
-            prompt_file = "temporal.j2"
+            prompt_file = "temporal_v2.j2"
 
         # Using random choices for size and n_prev with equal weights
         size_list = ["mid-length", "long and detailed"]
@@ -49,8 +51,8 @@ class DataGenerator:
         with open(self.store_dir / "scenario.json", "r") as f:
             all_scenario = json.load(f)
 
-        for i, topic in enumerate(all_topic):
-            for j, scenario in enumerate(all_scenario):
+        for i, scenario in enumerate(all_scenario):
+            for j, topic in enumerate(all_topic):
                 context_data = {
                     "video_topic": topic,
                     "scenario": scenario,
@@ -62,9 +64,12 @@ class DataGenerator:
                         prev_n_list, weights=prev_n_weight
                     )[0]
 
-                prompt = self._prompt_loader(prompt_file, context_data)
-                print(prompt)
-                response = self.llm.chat(prompt)
+                msg = self._prompt_loader(prompt_file, context_data)
+                print(msg)
+                print("=" * 50)
+                print("Generating response...")
+                print("=" * 50)
+                response = self.llm.response(msg)
                 if data_type == "temporal":
                     temporal_response_path = self.store_dir / "temporal_response.csv"
                     save_format = {
@@ -89,5 +94,7 @@ class DataGenerator:
                         primitive_response_path, mode="a", header=False, index=False
                     )
                 print(
-                    f"Generated data for topic {i}: {topic}, scenario {j}: {scenario}"
+                    f"Generated data for topic {j}: {topic}, scenario {i}: {scenario}"
                 )
+                break
+            break

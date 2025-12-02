@@ -1,4 +1,6 @@
 -   Video topic list
 -   Scenario list 
-- First Primitive descrioption
-- Second Temporal aware description
+
+- Primitive descrioption
+- Temporal aware description
+- Give me a list List of Irrelevant segments
