@@ -1,0 +1,53 @@
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **1** high-quality, unique, and realistic JSON data point for fine-tuning an educational video segment classifier.
+
+Your goal is to simulate a scenario where a VLM has analyzed an educational video and produced a structured description of an **irrelevant** segment.
+
+### **Inputs to Guide Generation**
+
+1.  **`BASE_VIDEO_TOPIC`**: `{{ data.video_topic }}`
+2.  **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}` (e.g., "Silence/Pause", "Anecdote", "Technical Difficulty", "Interruption")
+3.  **`DESCRIPTION_LENGTH`**: `{{ data.size }}`
+
+### **Your Process**
+
+You will generate a list containing exactly 1 JSON object. You must perform the following steps:
+
+1.  **Invent a Unique `video_topic`**:
+      * Do not use the `BASE_VIDEO_TOPIC` directly.
+      * Invent a **new, specific, and unique academic/technical topic** inspired by it.
+      * *Example:* If Base is "Math", invent "Linear Algebra: Eigenvalues."
+
+2.  **Invent a Unique Irrelevant Scenario**:
+      * Based on the `BASE_SCENARIO_TYPE`, invent a specific event that constitutes a distraction or non-educational moment.
+
+3.  **Write the `description` (VLM Simulation)**:
+      * **CRITICAL:** The description **MUST** mimic the exact output format of a Video-Language Model.
+      * It must be a single string containing the following headers and content structure:
+        * `### Clip Description (Chronological)`: A step-by-step narration of the distraction.
+        * `### Visual Details`: A list of visible objects/actions (ensure these match the distraction).
+        * `### Notable Irrelevant or Off-Topic Elements`: Explicitly list the distraction here (e.g., "Screen goes black," "Speaker laughs at cat").
+        * `### Transcript Summary`: A summary of what was said (or noting silence).
+      * **Tone:** Objective, observational, and detailed. Do *not* say "This is irrelevant." Just describe the events.
+
+4.  **Generate a "Reasoning Trace" (Chain-of-Thought)**:
+      * The `reasoning` field must be a detailed internal monologue showing *how* a classifier analyzes the VLM output to label it "Irrelevant."
+      * **Trace Structure**:
+          * **Analysis:** "Scanning the 'Transcript Summary' and 'Visual Details'..."
+          * **Observation:** "I notice the transcript mentions [X] which is unrelated to [Topic]."
+          * **Rule Check:** "The 'Notable Irrelevant Elements' section explicitly flags [Event]."
+          * **Conclusion:** "Therefore, this is a distraction."
+
+5.  **Format as JSON List**:
+      * Output **only** a valid JSON list.
+
+### **Output JSON Structure**
+
+Your output must be a single JSON list `[ { ... } ]`. Ensure all newlines in the description are escaped (`\n`).
+
+```json
+{
+  "video_topic": "...",
+  "description": "### Clip Description (Chronological)\nThe speaker stops writing on the whiteboard at 00:00:02. They look off-camera to the left. At 00:00:05, a loud siren is heard outside. The speaker winces and says, 'Wow, that is loud.' They stand silently waiting for the noise to pass until the clip ends.\n\n### Visual Details\n* Speaker (Male, 40s)\n* Whiteboard with partial equations\n* Window (background)\n\n### Notable Irrelevant or Off-Topic Elements\n* External noise interruption (Siren)\n* Speaker stops teaching to wait for silence\n\n### Transcript Summary\nThe speaker reacts to a loud noise outside and pauses their lecture on differential equations to wait for it to stop.",
+  "type": "Irrelevant",
+  "reasoning": "First, I check the Global Topic: 'Advanced Calculus'.\n\nNext, I analyze the 'Transcript Summary'. The text indicates the speaker is reacting to external noise ('Wow, that is loud') rather than explaining calculus concepts.\n\nLooking at the 'Notable Irrelevant or Off-Topic Elements', the VLM has explicitly detected 'External noise interruption' and 'Speaker stops teaching'.\n\nSince no educational content is being delivered and the flow is broken by an external event, this segment qualifies as a 'Distraction/Interruption'.\n\nFinal Decision: Irrelevant."
+}

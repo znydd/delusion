@@ -1,0 +1,46 @@
+You are an expert synthetic data generator for AI. Your task is to create a training example that teaches an LLM to detect **Contextual Drift**.
+
+**The Goal:** Generate a data point where the current segment is "Irrelevant" **ONLY** because it disconnects from the specific flow of the previous segments.
+
+### **Inputs**
+1.  **`BASE_VIDEO_TOPIC`**: `{{data.video_topic}}` 
+2.  **`CONTEXTUAL_BREAK_TYPE`**: `{{data.break_type}}`
+3.  **`NUM_PREVIOUS_SEGMENTS`**: `{{data.n_prev}}`
+
+### **Your Process**
+
+1.  **Invent a Specific Sub-Topic**:
+    * Do not use `BASE_VIDEO_TOPIC` directly.
+    * Invent a specific, niche academic subject derived from it.
+    * *Example:* Input "Cooking" $\rightarrow$ Use "Advanced French Pastry Techniques."
+    * *Example:* Input "Math" $\rightarrow$ Use "Linear Algebra: Eigenvectors."
+    * **This `SPECIFIC_TOPIC` is now the ground truth for this data point.**
+
+2.  **Construct the "Anchor" (The Context)**:
+    * Create `previous_segments_summary` containing **`{NUM_PREVIOUS_SEGMENTS}`** entries.
+    * These must be strictly focused on the **`SPECIFIC_TOPIC`**.
+
+3.  **Construct the "Drift" (The Current Segment)**:
+    * Create the `current_segment_description` using standard VLM headers (`### Clip Description`, etc.).
+    * **Crucial:** The content must be **semantically disjointed** from the `SPECIFIC_TOPIC` and the previous summaries.
+
+4.  **Construct the "Comparative Reasoning"**:
+    * **Step 1 (Context Baseline):** "The previous segments established a clear focus on [SPECIFIC_TOPIC]..."
+    * **Step 2 (Drift Analysis):** "The current segment discusses [Drift Topic]..."
+    * **Step 3 (Verdict):** "There is no pedagogical bridge. Irrelevant."
+
+### **Output JSON Structure**
+
+Your output must be a single JSON object.
+
+```json
+{
+  "video_topic": "Linear Algebra: Eigenvectors",
+  "previous_segments_summary": [
+    "00:00:00-00:01:00: Definition of eigenvectors and eigenvalues.",
+    "00:01:00-00:02:00: Walking through the characteristic equation det(A - lambda*I) = 0."
+  ],
+  "current_segment_description": "### Clip Description (Chronological)\nThe professor stops writing the equation. They turn to the class and start talking about the campus cafeteria menu for lunch today, specifically complaining about the pizza quality. This continues for 45 seconds.\n\n### Visual Details\n* Professor (leaning on podium)\n* Blackboard (static equations)\n\n### Notable Irrelevant or Off-Topic Elements\n* Discussion of lunch menu\n* Complaint about pizza\n* No math instruction\n\n### Transcript Summary\nThe speaker discusses 'soggy crusts' and 'pepperoni' at the cafeteria.",
+  "type": "Irrelevant",
+  "reasoning": "1. Context Baseline: The global topic is 'Linear Algebra: Eigenvectors' and previous segments focused on the 'characteristic equation'.\n\n2. Current Input Analysis: The current segment describes the 'campus cafeteria menu' and 'pizza quality'.\n\n3. Bridge Analysis: I am searching for a link (e.g., using pizza slices to explain fractions or geometry). However, the description confirms this is a complaint about food quality, not an analogy.\n\n4. Conclusion: The topic has shifted from 'Math' to 'Lunch' without educational purpose. This is a 'Personal Tangent'. Irrelevant."
+}

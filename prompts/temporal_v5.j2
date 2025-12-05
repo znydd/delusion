@@ -1,0 +1,55 @@
+You are an expert synthetic data generator for AI. Your task is to create **10** high-quality training examples that teach an LLM to detect **Contextual Drift**.
+
+**The Goal:** Generate a dataset where the current segment is "Irrelevant" **ONLY** because it disconnects from the specific flow of the previous segments established in that specific video.
+
+### **Inputs**
+1.  **`VIDEO_TOPIC_LIST`**: `{{data.video_topics}}` (A list containing exactly 10 distinct topics)
+2.  **`CONTEXTUAL_BREAK_TYPE`**: `{{data.break_type}}` (The specific scenario to apply to all 10, e.g., "Personal Anecdote", "Sudden Change of Subject", "Promo/Ad Break")
+3.  **`NUM_PREVIOUS_SEGMENTS`**: `{{data.n_prev}}`
+
+### **Your Process**
+
+You will generate a single JSON list containing **exactly 10** JSON objects. You must iterate through the `VIDEO_TOPIC_LIST` one by one.
+
+**For EACH of the 10 topics in the list, perform the following steps:**
+
+1.  **Invent a Specific Sub-Topic**:
+    * Take the current topic from the `VIDEO_TOPIC_LIST`.
+    * Invent a specific, niche academic subject derived from it.
+    * *Example:* Input "Cooking" $\rightarrow$ Use "Advanced French Pastry Techniques."
+    * **This `SPECIFIC_TOPIC` is now the ground truth for this data point.**
+
+2.  **Construct the "Anchor" (The Context)**:
+    * Create a list called `previous_segments_summary` containing exactly **`{NUM_PREVIOUS_SEGMENTS}`** entries.
+    * These summaries must be strictly focused on the `SPECIFIC_TOPIC`. They establish the educational flow.
+
+3.  **Construct the "Drift" (The Current Segment)**:
+    * Create the `current_segment_description` using standard VLM headers (`### Clip Description`, etc.).
+    * **Constraint 1:** The event must match the `CONTEXTUAL_BREAK_TYPE` provided in the inputs.
+    * **Constraint 2:** The content must be **semantically disjointed** from the `SPECIFIC_TOPIC` and the previous summaries.
+    * **Constraint 3:** Ensure the specific details of the drift are unique for this data point (do not repeat the same specific anecdote or distraction across the 10 items).
+
+4.  **Construct the "Comparative Reasoning"**:
+    * **Step 1 (Context Baseline):** "The previous segments established a clear focus on [SPECIFIC_TOPIC]..."
+    * **Step 2 (Drift Analysis):** "The current segment discusses [Drift Topic]..."
+    * **Step 3 (Verdict):** "There is no pedagogical bridge between [Specific Topic] and [Drift Topic]. Irrelevant."
+
+5.  **Format as JSON Object**:
+    * Add this object to the main list.
+
+### **Output JSON Structure**
+
+Your output must be a single JSON list containing exactly 10 objects: `[ {Object 1}, {Object 2}, ..., {Object 10} ]`.
+
+**Example Object Format:**
+```json
+{
+  "video_topic": "Linear Algebra: Eigenvectors",
+  "previous_segments_summary": [
+    "00:00:00-00:01:00: Definition of eigenvectors and eigenvalues.",
+    "00:01:00-00:02:00: Walking through the characteristic equation det(A - lambda*I) = 0."
+  ],
+  "current_segment_description": "### Clip Description (Chronological)\nThe professor stops writing the equation. They turn to the class and start talking about the campus cafeteria menu for lunch today, specifically complaining about the pizza quality. This continues for 45 seconds.\n\n### Visual Details\n* Professor (leaning on podium)\n* Blackboard (static equations)\n\n### Notable Irrelevant or Off-Topic Elements\n* Discussion of lunch menu\n* Complaint about pizza\n* No math instruction\n\n### Transcript Summary\nThe speaker discusses 'soggy crusts' and 'pepperoni' at the cafeteria.",
+  "type": "Irrelevant",
+  "reasoning": "1. Context Baseline: The global topic is 'Linear Algebra: Eigenvectors' and previous segments focused on the 'characteristic equation'.\n\n2. Current Input Analysis: The current segment describes the 'campus cafeteria menu' and 'pizza quality'.\n\n3. Bridge Analysis: I am searching for a link (e.g., using pizza slices to explain fractions or geometry). However, the description confirms this is a complaint about food quality, not an analogy.\n\n4. Conclusion: The topic has shifted from 'Math' to 'Lunch' without educational purpose. This is a 'Personal Tangent'. Irrelevant."
+}
