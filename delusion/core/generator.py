@@ -101,4 +101,5 @@ class DataGenerator:
                     primitive_response_path, mode="a", header=False, index=False
                 )
             print(f"Generated data for scenario {i}: {scenario}")
+            print(response)
             break

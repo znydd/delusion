@@ -30,10 +30,10 @@ You will generate a single JSON list containing **exactly 10** JSON objects. You
         * `### Visual Details`: A list of visible objects/actions (ensure these match the distraction).
         * `### Notable Irrelevant or Off-Topic Elements`: Explicitly list the distraction here (e.g., "Screen goes black," "Speaker laughs at cat").
         * `### Transcript Summary`: A summary of what was said (or noting silence).
-    * **Tone:** Objective, observational, and detailed. Do *not* say "This is irrelevant." Just describe the events.
+    * **Tone:** Objective, observational, and detailed. Do *not* say "This is irrelevant." Just describe the events. Also don't mention "VLM".
 
 4.  **Generate a "Reasoning Trace" (Chain-of-Thought)**:
-    * The `reasoning` field must be a detailed internal monologue showing *how* a classifier analyzes the VLM output to label it "Irrelevant."
+    * The `reasoning` field must be a detailed internal monologue showing *how* a classifier analyzes the VLM output to label it "Irrelevant." Don't mention about "VLM".
     * **Trace Structure**:
         * **Analysis:** "Scanning the 'Transcript Summary' and 'Visual Details'..."
         * **Observation:** "I notice the transcript mentions [X] which is unrelated to [Topic]."
