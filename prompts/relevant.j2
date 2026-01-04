@@ -1,0 +1,67 @@
+You are an expert curriculum designer and synthetic data generator for AI. Your sole task is to create **10** high-quality, unique, and realistic JSON data points for fine-tuning an educational video segment classifier.
+
+Your goal is to simulate a scenario where an automated video understanding system has analyzed educational videos and produced structured descriptions of **relevant** segments.
+
+## **Inputs to Guide Generation**
+
+1. **`VIDEO_TOPIC_LIST`**: `{{ data.video_topics }}` (A list containing exactly 10 distinct topics)
+2. **`BASE_SCENARIO_TYPE`**: `{{ data.scenario }}` *(You will be provided a scenario type; treat it as a single consistent instructional style across all 10 clips.)*
+3. **`DESCRIPTION_LENGTH`**: `{{ data.size }}`
+
+## **Your Process**
+
+You will generate a single JSON list containing **exactly 10** JSON objects. You must iterate through the `VIDEO_TOPIC_LIST` one by one.
+
+**For EACH of the 10 topics in the list, perform the following steps:**
+
+### 1. **Refine the Video Topic**:
+- Take the current topic from the `VIDEO_TOPIC_LIST`.
+- Invent a **specific, unique academic/technical sub-topic** inspired by it.
+- *Example:* If the list item is "Math", invent "Linear Algebra: Eigenvalues."
+
+### 2. **Invent a Unique Relevant Scenario**:
+- Using the single `BASE_SCENARIO_TYPE` provided, invent a unique specific instructional event for *this* video segment.
+- **Constraint:** Even though the scenario type is the same for all 10 (e.g., all are "Worked Examples"), the specific details must vary:
+  - Different example problems, datasets, or inputs
+  - Different representations (equations, diagrams, slides, code cells, charts)
+  - Different sub-steps emphasized (setup, transformation, verification, interpretation)
+  - Different instructor actions (writing, pointing, annotating, highlighting, running code, checking answers)
+- The scenario must clearly show **active teaching aligned with the refined sub-topic**.
+
+### 3. **Write the `description` (VLM-like Clip Simulation)**:
+- **CRITICAL:** The description **MUST** mimic the exact output format of a video-language model style description.
+- It must be a single string containing the following headers and content structure:
+  - `### Clip Description (Chronological)`: A step-by-step narration of the teaching moment.
+  - `### Visual Details`: A list of visible objects/actions (ensure these match the teaching content).
+  - `### Notable Relevant or On-Topic Elements`: Explicitly list the instructional content here (e.g., "Derives formula," "Solves example," "Explains definition," "Annotates diagram," "Runs code and interprets output").
+  - `### Transcript Summary`: A summary of what was said (focused on the instructional content).
+- **Tone:** Objective, observational, and detailed. Do *not* say "This is relevant." Just describe the events.
+- Also **do not mention "VLM"**.
+
+### 4. **Generate a "Reasoning Trace" (Chain-of-Thought)**:
+- The `reasoning` field must be a detailed internal monologue showing *how* a classifier analyzes the clip output to label it "**Relevant**."
+- **Don't mention about "VLM"**.
+- **Trace Structure**:
+  - **Analysis:** "Scanning the 'Transcript Summary' and 'Visual Details'..."
+  - **Observation:** "I notice the transcript explains [X] which directly matches [Topic/Sub-topic]."
+  - **Rule Check:** "The 'Notable Relevant or On-Topic Elements' section explicitly confirms [Instructional Action]."
+  - **Conclusion:** "Therefore, this segment advances the learning objective."
+
+### 5. **Format as JSON Object**:
+- Add this object to the main list.
+
+## **Output JSON Structure**
+
+Your output must be a single JSON list containing exactly 10 objects:  
+`[ {Object 1}, {Object 2}, ..., {Object 10} ]`
+
+Ensure all newlines in the descriptions are escaped (`\n`).
+
+### **Example Object Format**
+```json
+{
+  "video_topic": "...",
+  "description": "### Clip Description (Chronological)\nAt 00:00:02, the instructor writes the main equation on the whiteboard and underlines the variable being solved for. At 00:00:10, they substitute the given values and explain why the units must be consistent. By 00:00:25, they simplify the expression step-by-step, narrating each transformation. At 00:00:40, they compute the final numeric answer and circle it. At 00:00:48, they briefly verify the result by checking it against the original setup.\n\n### Visual Details\n* Instructor (Female, 30s)\n* Whiteboard with equations and unit annotations\n* Underlined target variable\n* Circled final answer\n\n### Notable Relevant or On-Topic Elements\n* Step-by-step problem solving aligned with the topic\n* Explicit substitution of values and unit checking\n* Verification of the final answer\n\n### Transcript Summary\nThe instructor solves a topic-specific problem by setting up the equation, substituting known values, simplifying carefully, and verifying the solution using the original conditions.",
+  "type": "Relevant",
+  "reasoning": "First, I check the Global Topic: '[Refined Topic]'.\n\nScanning the 'Transcript Summary' and 'Visual Details', I see the instructor is explaining and executing a structured solution process that directly targets the refined topic.\n\nI notice the transcript includes topic-specific steps (equation setup, substitution, simplification, and verification) rather than unrelated conversation.\n\nThe 'Notable Relevant or On-Topic Elements' section explicitly confirms instructional actions such as step-by-step solving and checking the answer.\n\nSince the segment contains direct teaching aligned with the learning objective and no off-topic diversion, it should be labeled Relevant.\n\nFinal Decision: Relevant."
+}
