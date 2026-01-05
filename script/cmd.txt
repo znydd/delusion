@@ -20,13 +20,33 @@
     --port 8000 \
     --n-gpu-layers 99 \
     --threads -1 \
-    --ctx-size 16384 \
+    --ctx-size 32000 \
     --temp 1.0 \
     --top-p 1.0 \
     --top-k 0 \
     --chat-template-file /home/t2430487/model/gpt_oss.jinja \
     --jinja
 
-    
+./llama-server \
+    --model /home/t2430487/model/gpt-oss-20b-F16.gguf \
+    --host 127.0.0.1 \
+    --port 8000 \
+    --n-gpu-layers 99 \
+    --threads -1 \
+    --ctx-size 40000 \
+    --temp 1.0 \
+    --top-p 1.0 \
+    --top-k 0 \
+    --jinja \
+    --chat-template-kwargs '{"reasoning_effort": "high"}'
+
+
+
+    --chat-template-file /home/t2430487/model/gpt_oss.jinja
     --chat-template-kwargs '{"reasoning_effort": "high"}'
     --chat-template-kwargs "{\"reasoning_effort\": \"high\"}"
+
+
+====================
+Generated data for scenario 50: Group activity not related to lecture topic 170: Inorganic Chemistry | Biochemistry | Quantum Chemistry | Spectroscopy | Chemical Thermodynamics | Polymer Chemistry | Environmental Chemistry | Materials Chemistry | Classical Mechanics | Electromagnetism
+====================

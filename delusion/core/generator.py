@@ -29,7 +29,7 @@ class DataGenerator:
     def _prompt_loader(self, file_name: str, context_data: dict) -> str:
         template = self.prompt_env.get_template(file_name)
         prompt = template.render(data=context_data)
-        print(prompt)
+        # print(prompt)
         msg = [{"role": "user", "content": prompt}]
         return msg
 
@@ -51,17 +51,19 @@ class DataGenerator:
         with open(self.store_dir / "scenario.json", "r") as f:
             all_scenario = json.load(f)
 
-        topic_count = 0
+        topic_count = 170
         topic_length = len(all_topic)
 
-        for i, scenario in enumerate(all_scenario):
+        for i in range(51, len(all_scenario)):
+            scenario = all_scenario[i]
             if topic_count >= topic_length:
                 topic_count = 0
             topic_list = all_topic[topic_count : topic_count + 10]
+            topic_list = str(" | ".join(topic_list))
             topic_count += 10
 
             context_data = {
-                "video_topics": ", ".join(topic_list),
+                "video_topics": topic_list,
                 "scenario": scenario,
                 "size": random.choices(size_list, weights=size_weight)[0],
             }
@@ -72,15 +74,17 @@ class DataGenerator:
                 )[0]
 
             msg = self._prompt_loader(prompt_file, context_data)
-            print(msg)
+            
             print("=" * 50)
             print("Generating response...")
             print("=" * 50)
             response = self.llm.response(msg)
+            print(response)
+
             if data_type == "temporal":
                 temporal_response_path = self.store_dir / "temporal_response.csv"
                 save_format = {
-                    "video_topics": [", ".join(topic_list)],
+                    "video_topics": [topic_list],
                     "scenario": [scenario],
                     "size": [context_data["size"]],
                     "n_prev": [context_data["n_prev"]],
@@ -92,7 +96,7 @@ class DataGenerator:
             elif data_type == "primitive":
                 primitive_response_path = self.store_dir / "primitive_response.csv"
                 save_format = {
-                    "video_topics": [", ".join(topic_list)],
+                    "video_topics": [topic_list],
                     "scenario": [scenario],
                     "size": [context_data["size"]],
                     "response": [response],
@@ -100,6 +104,10 @@ class DataGenerator:
                 pd.DataFrame(save_format).to_csv(
                     primitive_response_path, mode="a", header=False, index=False
                 )
-            print(f"Generated data for scenario {i}: {scenario}")
-            print(response)
-            break
+
+            print()
+            print("=" * 20)
+            print(f"Generated data for scenario {i}: {scenario} topic {topic_count}: {topic_list}")
+            print("=" * 20)
+            print()
+
